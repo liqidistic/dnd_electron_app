@@ -11,6 +11,7 @@ Application **Electron** pour la gestion de tables **Dungeons & Dragons**, avec 
 
 ## Documentation
 
+- [DOCUMENTATION_UTILISATEUR.md](./DOCUMENTATION_UTILISATEUR.md) — **guide utilisateur** (connexion, tables, personnages, agenda)
 - [DESCRIPTIF_REALISATION.md](./DESCRIPTIF_REALISATION.md) — réalisation du projet
 - [RESSOURCES.md](./RESSOURCES.md) — ressources et configuration
 

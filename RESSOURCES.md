@@ -72,6 +72,7 @@ URL d'import : `https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600
 ## 📁 Structure des fichiers
 
 ### Fichiers principaux
+- `DOCUMENTATION_UTILISATEUR.md` - Guide utilisateur (prise en main de l’application)
 - `main.js` - Processus principal Electron
 - `preload.js` - Script de préchargement pour l'exposition sécurisée de l'API
 - `package.json` - Configuration et dépendances du projet
