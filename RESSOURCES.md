@@ -34,7 +34,7 @@ URL d'import : `https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600
 ## 🗄️ Base de données
 
 ### Système de gestion
-- **MySQL/MariaDB** - Base de données relationnelle
+- MySQL - Base de données relationnelle
 - Configuration via variables d'environnement (`.env`)
 
 ### Tables principales
