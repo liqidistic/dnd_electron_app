@@ -45,6 +45,13 @@ URL d'import : `https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600
 - `caracteristique` - Caractéristiques des personnages
 - `agenda` - Sessions planifiées
 
+### Initialisation SQL (schéma + données de démo)
+- Fichier : `database/init_dndapp.sql`
+- Crée la base `dndapp`, toutes les tables et un jeu de données (comptes, une table de jeu, sessions agenda, personnages).
+- Exécution : `mysql -u root -p < database/init_dndapp.sql` (depuis la racine du projet) ou via MySQL Workbench.
+- Comptes de test : `mjdemo`, `joueur1`, `joueur2` — mot de passe **`demo123`**. Code d’invitation de la table : **`DEMO2026`**.
+- **Attention** : le script supprime les tables existantes dans `dndapp` avant de les recréer.
+
 ## 🛠️ Technologies et frameworks
 
 ### Backend

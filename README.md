@@ -5,8 +5,9 @@ Application **Electron** pour la gestion de tables **Dungeons & Dragons**, avec 
 ## Démarrage rapide
 
 1. `npm install`
-2. Copier `.env.example` vers `.env` et configurer la connexion MySQL
-3. `npm start`
+2. Créer la base et les données de démo : exécuter `database/init_dndapp.sql` (détails dans [RESSOURCES.md](./RESSOURCES.md))
+3. Copier `.env.example` vers `.env` et configurer la connexion MySQL
+4. `npm start`
 
 ## Documentation
 
