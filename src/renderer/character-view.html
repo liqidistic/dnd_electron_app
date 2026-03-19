@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DND – Fiche personnage</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Fiche personnage</h1>
+      <div style="display: flex; gap: 8px">
+        <button id="btn-back-dashboard" class="secondary-btn">
+          ⟵ Retour au tableau de bord
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="panel">
+        <div id="character-view-root"></div>
+        <p id="char-view-message" class="message"></p>
+
+        <div id="character-actions" style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px; display: none;">
+          <button id="btn-edit-character" class="primary-btn">
+            Modifier ce personnage
+          </button>
+          <button id="btn-delete-character" class="danger-btn">
+            Supprimer ce personnage
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

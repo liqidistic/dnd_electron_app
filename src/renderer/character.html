@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DND – Création de personnage</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Créer un personnage</h1>
+    </header>
+
+    <main class="content">
+      <section class="panel">
+        <form id="character-form">
+          <h2>Informations de base</h2>
+
+          <label>
+            Nom du personnage
+            <input type="text" id="char-name" required />
+          </label>
+
+          <label>
+            Race
+            <input type="text" id="char-race" placeholder="Humain, Elfe..." />
+          </label>
+
+          <label>
+            Classe
+            <input
+              type="text"
+              id="char-class"
+              placeholder="Guerrier, Mage..."
+            />
+          </label>
+
+          <label>
+            Alignement
+            <input
+              type="text"
+              id="char-align"
+              placeholder="Loyal Bon, Chaotique Neutre..."
+            />
+          </label>
+
+          <label>
+            Table associée (optionnel)
+            <select id="char-table">
+              <option value="">— Aucune table —</option>
+            </select>
+          </label>
+
+          <label>
+            Image du personnage (avatar)
+            <input type="file" id="char-avatar" accept="image/*" />
+          </label>
+
+          <div id="avatar-preview" class="avatar-preview">
+            <p class="muted">Aucune image sélectionnée.</p>
+          </div>
+
+          <hr class="sep" />
+
+          <h2>Caractéristiques</h2>
+          <p class="muted">
+            Répartis tes points entre FOR, DEX, CON, INT, SAG et CHA.
+          </p>
+
+          <p id="points-left" class="points">
+            Points restants : <strong>27</strong>
+          </p>
+
+          <table class="abilities-table">
+            <thead>
+              <tr>
+                <th>Caractéristique</th>
+                <th>Valeur</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ability="FOR">
+                <td>FOR</td>
+                <td><span class="ability-value">8</span></td>
+                <td>
+                  <button type="button" class="btn-dec">-</button>
+                  <button type="button" class="btn-inc">+</button>
+                </td>
+              </tr>
+              <tr data-ability="DEX">
+                <td>DEX</td>
+                <td><span class="ability-value">8</span></td>
+                <td>
+                  <button type="button" class="btn-dec">-</button>
+                  <button type="button" class="btn-inc">+</button>
+                </td>
+              </tr>
+              <tr data-ability="CON">
+                <td>CON</td>
+                <td><span class="ability-value">8</span></td>
+                <td>
+                  <button type="button" class="btn-dec">-</button>
+                  <button type="button" class="btn-inc">+</button>
+                </td>
+              </tr>
+              <tr data-ability="INT">
+                <td>INT</td>
+                <td><span class="ability-value">8</span></td>
+                <td>
+                  <button type="button" class="btn-dec">-</button>
+                  <button type="button" class="btn-inc">+</button>
+                </td>
+              </tr>
+              <tr data-ability="SAG">
+                <td>SAG</td>
+                <td><span class="ability-value">8</span></td>
+                <td>
+                  <button type="button" class="btn-dec">-</button>
+                  <button type="button" class="btn-inc">+</button>
+                </td>
+              </tr>
+              <tr data-ability="CHA">
+                <td>CHA</td>
+                <td><span class="ability-value">8</span></td>
+                <td>
+                  <button type="button" class="btn-dec">-</button>
+                  <button type="button" class="btn-inc">+</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button type="submit" style="margin-top: 16px">
+            Créer le personnage
+          </button>
+        </form>
+
+        <p id="char-message" class="message"></p>
+
+        <button id="btn-back-dashboard" class="secondary-btn">
+          ⟵ Retour au tableau de bord
+        </button>
+      </section>
+    </main>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

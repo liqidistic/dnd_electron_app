@@ -1,0 +1,27 @@
+# Dépendances
+node_modules/
+
+# Secrets / environnement local (ne jamais commiter)
+.env
+.env.local
+.env.*.local
+
+# Logs & OS
+*.log
+.DS_Store
+Thumbs.db
+
+# Build / sorties Electron
+dist/
+out/
+release/
+*.asar
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Debug
+npm-debug.log*

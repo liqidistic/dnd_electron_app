@@ -1,0 +1,15 @@
+{
+  "name": "dnd-electron-app",
+  "version": "1.0.0",
+  "description": "Gestion de tables DnD avec Electron et MySQL",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.6.1",
+    "electron": "^39.1.2",
+    "mysql2": "^3.15.3"
+  }
+}

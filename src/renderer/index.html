@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DND – Connexion</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="center">
+      <div class="card">
+        <h1>DND Table Manager</h1>
+        <p class="muted">Connecte-toi pour gérer tes tables</p>
+
+        <form id="login-form">
+          <label>
+            Login
+            <input type="text" id="login" required />
+          </label>
+          <label>
+            Mot de passe
+            <input type="password" id="password" required />
+          </label>
+          <button type="submit">Se connecter</button>
+        </form>
+
+        <p id="message" class="message"></p>
+      </div>
+    </main>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

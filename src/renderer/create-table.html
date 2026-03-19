@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DND – Créer une table</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Créer une table de jeu</h1>
+    </header>
+
+    <main class="content">
+      <section class="panel">
+        <form id="table-form">
+          <h2>Informations de la table</h2>
+
+          <label>
+            Nom de la table
+            <input
+              type="text"
+              id="table-name"
+              required
+              placeholder="Ex. La Confrérie de l'Aube"
+            />
+          </label>
+
+          <label>
+            Description
+            <textarea
+              id="table-desc"
+              rows="3"
+              placeholder="Ambiance, univers, contraintes, etc."
+            ></textarea>
+          </label>
+
+          <label>
+            Nombre maximum de joueurs
+            <input
+              type="number"
+              id="table-max"
+              min="1"
+              max="10"
+              placeholder="ex. 5"
+            />
+          </label>
+
+          <label>
+            Prochaine session (optionnel)
+            <input type="datetime-local" id="table-date" />
+          </label>
+
+          <button type="submit" style="margin-top: 16px">Créer la table</button>
+        </form>
+
+        <p id="table-message" class="message"></p>
+
+        <button id="btn-back-dashboard" class="secondary-btn">
+          ⟵ Retour au tableau de bord
+        </button>
+      </section>
+    </main>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

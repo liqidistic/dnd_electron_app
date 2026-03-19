@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DND – Connexion</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="center">
+      <div class="card">
+        <h1>DND Manager</h1>
+        <p class="muted">
+          Connecte-toi pour gérer et participer aux tables de jeu
+        </p>
+
+        <form id="login-form">
+          <label>
+            Login
+            <input type="text" id="login" autocomplete="username" required />
+          </label>
+          <label>
+            Mot de passe
+            <input
+              type="password"
+              id="password"
+              autocomplete="current-password"
+              required
+            />
+          </label>
+          <button type="submit">Se connecter</button>
+        </form>
+
+        <button type="button" id="btn-go-register" class="secondary-btn">
+          Créer un compte
+        </button>
+
+        <p id="message" class="message"></p>
+      </div>
+    </main>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

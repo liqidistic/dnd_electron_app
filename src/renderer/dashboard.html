@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self';"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DND - Tableau de bord</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <h1 id="welcome-title">Bienvenue</h1>
+
+      <button id="btn-logout" class="danger-btn danger-btn--small">
+        Déconnexion
+      </button>
+    </header>
+
+    <main class="container">
+      <div class="grid-2">
+        <!-- ===== TABLES ===== -->
+        <section class="card">
+          <h2>Mes tables de jeu</h2>
+
+          <p id="tables-empty" class="muted">Chargement de vos tables...</p>
+          <ul id="tables-list" class="list"></ul>
+
+          <div class="card-actions">
+            <button id="btn-create-table" class="primary-btn">
+              Créer une table
+            </button>
+            <button id="btn-join-table" class="primary-btn">
+              Rejoindre une table
+            </button>
+          </div>
+        </section>
+
+        <!-- ===== PERSONNAGES ===== -->
+        <section class="card">
+          <h2>Personnages</h2>
+
+          <p id="characters-empty" class="muted">
+            Chargement de vos personnages...
+          </p>
+          <ul id="characters-list" class="list"></ul>
+
+          <div class="card-actions">
+            <button id="btn-create-character" class="primary-btn">
+              Créer un personnage
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>

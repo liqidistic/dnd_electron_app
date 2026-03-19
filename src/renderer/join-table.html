@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Rejoindre une table</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="auth-container">
+      <section class="auth-card">
+        <h1>Rejoindre une table</h1>
+
+        <form id="join-table-form">
+          <label>
+            Code d'invitation
+            <input type="text" id="join-code" placeholder="ABC12345" required />
+          </label>
+
+          <p id="join-message" class="message"></p>
+
+          <button type="submit" class="primary-btn">Rejoindre</button>
+        </form>
+
+        <button id="btn-back-dashboard" class="link-btn">
+          Retour au dashboard
+        </button>
+      </section>
+    </main>
+
+    <!-- JS inline pour être sûr que la page fonctionne -->
+    <script>
+      console.log("join-table.html chargé");
+
+      function requireLoginInline() {
+        const userStr = localStorage.getItem("dndUser");
+        if (!userStr) {
+          window.location.href = "login.html";
+          return null;
+        }
+        try {
+          return JSON.parse(userStr);
+        } catch (e) {
+          window.location.href = "login.html";
+          return null;
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        console.log("DOMContentLoaded sur join-table.html");
+
+        const form = document.getElementById("join-table-form");
+        const msg = document.getElementById("join-message");
+        const btnBack = document.getElementById("btn-back-dashboard");
+
+        const user = requireLoginInline();
+        if (!user) return;
+
+        if (!form) {
+          console.error("Formulaire join-table introuvable");
+          return;
+        }
+
+        if (!window.api || !window.api.joinTable) {
+          console.error("window.api.joinTable est indisponible");
+          msg.textContent =
+            "Erreur interne : API joinTable indisponible (preload).";
+          msg.className = "message error";
+          return;
+        }
+
+        btnBack.addEventListener("click", () => {
+          window.location.href = "dashboard.html";
+        });
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          msg.textContent = "";
+          msg.className = "message";
+
+          const rawCode = document.getElementById("join-code").value;
+          const code = rawCode.trim();
+
+          console.log("Submit join-table avec code :", code);
+
+          if (!code) {
+            msg.textContent = "Merci d'entrer un code d'invitation.";
+            msg.classList.add("error");
+            return;
+          }
+
+          msg.textContent = "Vérification du code...";
+          msg.className = "message";
+
+          try {
+            const res = await window.api.joinTable({
+              id_user: user.id_user,
+              code,
+            });
+
+            console.log("Réponse IPC tables:join :", res);
+
+            if (!res || !res.ok) {
+              msg.textContent =
+                (res && res.error) || "Impossible de rejoindre la table.";
+              msg.classList.add("error");
+              return;
+            }
+
+            msg.textContent = "Table rejointe avec succès !";
+            msg.classList.add("success");
+
+            setTimeout(() => {
+              window.location.href = "dashboard.html";
+            }, 800);
+          } catch (err) {
+            console.error("Erreur JS pendant joinTable :", err);
+            msg.textContent =
+              "Erreur inattendue lors de la tentative de rejoindre la table : " +
+              err.message;
+            msg.classList.add("error");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DND – Inscription</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="auth-container">
+      <section class="auth-card">
+        <h1>Créer un compte</h1>
+
+        <form id="register-form">
+          <label>
+            Login
+            <input type="text" id="reg-login" required />
+          </label>
+
+          <label>
+            Pseudo (facultatif)
+            <input type="text" id="reg-pseudo" />
+          </label>
+
+          <label>
+            Email (facultatif)
+            <input type="email" id="reg-email" />
+          </label>
+
+          <label>
+            Mot de passe
+            <input type="password" id="reg-password" required />
+          </label>
+
+          <label>
+            Confirmation du mot de passe
+            <input type="password" id="reg-password-confirm" required />
+          </label>
+
+          <p id="reg-message" class="message"></p>
+
+          <button type="submit" class="primary-btn">S'inscrire</button>
+        </form>
+
+        <button id="btn-go-login" class="link-btn">J'ai déjà un compte</button>
+      </section>
+    </main>
+
+    <!-- JS inline autonome pour être sûr que l'inscription marche -->
+    <script>
+      console.log("register.html chargé");
+
+      window.addEventListener("DOMContentLoaded", () => {
+        console.log("DOMContentLoaded sur register.html");
+
+        const form = document.getElementById("register-form");
+        const msg = document.getElementById("reg-message");
+        const btnGoLogin = document.getElementById("btn-go-login");
+
+        if (!form) {
+          console.error("Formulaire d'inscription introuvable");
+          return;
+        }
+
+        if (!window.api || !window.api.register) {
+          console.error("window.api.register est indisponible");
+          msg.textContent =
+            "Erreur interne : API d'inscription indisponible (preload).";
+          msg.className = "message error";
+          return;
+        }
+
+        btnGoLogin.addEventListener("click", () => {
+          window.location.href = "login.html";
+        });
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          msg.textContent = "";
+          msg.className = "message";
+
+          const login = document.getElementById("reg-login").value.trim();
+          const pseudo = document.getElementById("reg-pseudo").value.trim();
+          const email = document.getElementById("reg-email").value.trim();
+          const password = document.getElementById("reg-password").value;
+          const passwordConfirm = document.getElementById(
+            "reg-password-confirm"
+          ).value;
+
+          console.log("Submit inscription :", { login, pseudo, email });
+
+          if (!login || !password) {
+            msg.textContent = "Login et mot de passe sont obligatoires.";
+            msg.classList.add("error");
+            return;
+          }
+
+          if (password !== passwordConfirm) {
+            msg.textContent = "Les mots de passe ne correspondent pas.";
+            msg.classList.add("error");
+            return;
+          }
+
+          msg.textContent = "Création du compte...";
+          msg.className = "message";
+
+          try {
+            const res = await window.api.register({
+              login,
+              passwordPlain: password,
+              pseudo,
+              email,
+            });
+
+            console.log("Réponse IPC register :", res);
+
+            if (!res || !res.ok) {
+              msg.textContent =
+                (res && res.error) ||
+                "Impossible de créer le compte (erreur inconnue).";
+              msg.classList.add("error");
+              return;
+            }
+
+            msg.textContent = "Compte créé, redirection...";
+            msg.classList.add("success");
+
+            localStorage.setItem("dndUser", JSON.stringify(res.user));
+            setTimeout(() => {
+              window.location.href = "dashboard.html";
+            }, 500);
+          } catch (err) {
+            console.error("Erreur JS pendant register:", err);
+            msg.textContent =
+              "Erreur inattendue pendant l'inscription : " + err.message;
+            msg.classList.add("error");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
